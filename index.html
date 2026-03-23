@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 2. REM适配脚本：仅在移动端生效 -->
+  <!-- <script>
+    (function () {
+      // 定义移动端阈值：屏幕宽度 < 768px 视为移动端
+      const MOBILE_THRESHOLD = 768;
+      // 设计稿宽度（根据你的PC设计稿改，比如1920/1440）
+      const DESIGN_WIDTH = 1920;
+      // 基准值：1rem = 100px（设计稿），方便换算
+      const BASE_FONT_SIZE = 100;
+
+      function setRem() {
+        const screenWidth = document.documentElement.clientWidth;
+        // 仅在移动端（<768px）设置REM，PC端保持默认16px
+        if (screenWidth < MOBILE_THRESHOLD) {
+          const fontSize = (screenWidth / DESIGN_WIDTH) * BASE_FONT_SIZE;
+          document.documentElement.style.fontSize = fontSize + 'px';
+        } else {
+          // PC端重置为默认值，保证PX单位正常
+          document.documentElement.style.fontSize = '16px';
+        }
+      }
+
+      // 初始化 + 屏幕尺寸变化时重新计算
+      setRem();
+      window.addEventListener('resize', setRem);
+    })();
+  </script> -->
+  <title>知识图谱大屏</title>
+</head>
+
+<body>
+  <!-- 必须有这个 root 节点 -->
+  <div id="root"></div>
+  <!-- 引入 Vite 入口脚本 -->
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

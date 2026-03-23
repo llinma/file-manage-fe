@@ -1,0 +1,75 @@
+   /* 左侧导航栏 */
+   .sidebar {
+       border-right: 1px solid rgba(59, 130, 246, 0.6);
+       padding: 12px;
+       overflow: auto;
+       backdrop-filter: blur(4px);
+
+       .title {
+           display: flex;
+           align-items: center;
+           margin-bottom: 20px;
+           padding-bottom: 10px;
+           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+       }
+
+       .list {
+           margin-bottom: 16px;
+           padding: 12px;
+           border-radius: 8px;
+           cursor: pointer;
+           transform: all 0 0.2s;
+           border: 1px solid transparent;
+       }
+
+
+       /* 搜索图标容器（纯装饰，无点击） */
+       .search-icon-wrapper {
+           width: 36px;
+           height: 36px;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           background-color: #0f172a;
+           /* 匹配大屏深色背景 */
+           border: 1px solid rgba(59, 130, 246, 0.6);
+           /* 蓝色荧光边框 */
+           border-right: none;
+           /* 去掉和输入框衔接的边框，视觉统一 */
+           border-radius: 4px 0 0 4px;
+           /* 仅左侧圆角 */
+           color: #3b82f6;
+           /* 图标蓝色，适配科技风 */
+           box-shadow: 0 0 6px rgba(59, 130, 246, 0.2);
+       }
+
+
+       .tech-style-input {
+           width: 260px;
+           height: 36px;
+           padding: 0 12px;
+           /* 仅右侧内边距，避免文字覆盖图标 */
+           background-color: #0f172a;
+           border: 1px solid rgba(59, 130, 246, 0.6);
+           border-radius: 0 4px 4px 0;
+           /* 仅右侧圆角，和图标衔接 */
+           color: #e2e8f0;
+           /* 浅灰文字，保证可读性 */
+           font-size: 14px;
+           outline: none;
+           box-shadow: 0 0 8px rgba(59, 130, 246, 0.3), inset 0 0 4px rgba(59, 130, 246, 0.1);
+           transition: all 0.2s ease;
+
+           &:focus {
+               border-color: rgba(96, 165, 250, 0.9);
+               box-shadow: 0 0 12px rgba(96, 165, 250, 0.5), inset 0 0 6px rgba(96, 165, 250, 0.2);
+           }
+
+           &::placeholder {
+               color: #64748b;
+               /* 浅灰蓝占位符，不抢视觉焦点 */
+               opacity: 0.8;
+           }
+       }
+
+   }
