@@ -16,7 +16,7 @@ export const uploadPDF = (formData) => {
  * 预览PDF文件
  * @param {String} fileId - 文件ID
  */
-export const openPDFPreview = (fileId) => {
+export const openDocument = (fileId) => {
   window.open(`/api/file/preview/${fileId}`, '_blank');
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { openDocument } from '../../api/knowledgeApi';
+import { openDocument } from '../../api/fileApi';
 import './index.less'
 
 /**
