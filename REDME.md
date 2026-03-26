@@ -53,11 +53,10 @@ API 通信：自定义 Axios 封装（fileApi.js、knowledgeApi.js）
 提供下载接口 /api/file/download/{fileId}
 
 3. 文件预览
-暂时调用后端接口，新打开页面展示
-后续计划使用 react-pdf 实现预览效果
+调用后端接口，使用 iframe 实现
 
 4. 整体背景
-使用拓扑图实现
+使用 echarts 拓扑图实现
 增加一个文件拓扑图会增加一个节点
 
 

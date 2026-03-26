@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import KnowledgeGraph from '../../components/KnowledgeGraph/index.jsx';
 import KnowledgeCard from '../../components/KnowledgeCard/index.jsx';
 import DocumentList from '../../components/DocumentList/index.jsx';
 import FileUpload from '../../components/FileUpload/index.jsx';
-// import PDFPreview from '../../components/PDFPreview/index.jsx';
+import PDFPreview from '../../components/PDFPreview/index.jsx';
 import Navbar from '../../components/Navbar/index.jsx';
+import AIAssistantChat from "../../components/AIAssistantChat/index.jsx"
 import { getGraphData } from '../../api/knowledgeApi.js';
-import { openPDFPreview } from '../../api/fileApi.js'
-import { Modal } from 'antd';
 import debounce from 'lodash/debounce'
+import { Modal, Spin } from 'antd';
 import './index.less';
 
 const KnowledgePage = () => {
@@ -17,6 +17,8 @@ const KnowledgePage = () => {
   const [activeNode, setActiveNode] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const [assistant, setAssistant] = useState(false)
   const originalDataRef = useRef([])
 
   // 加载数据
@@ -43,12 +45,7 @@ const KnowledgePage = () => {
 
   // 预览PDF
   const handlePreview = async (node) => {
-    await openPDFPreview(node.id)
-  };
-
-  // 关闭预览
-  const handleClosePreview = () => {
-    setActiveNode(null);
+    setActiveNode(node)
   };
 
   // 上传成功后刷新数据
@@ -88,7 +85,11 @@ const KnowledgePage = () => {
 
   return (
     <div className='index-page'>
-      <Navbar onUploadClick={() => setIsModalOpen(true)} />
+      <Spin spinning={loading} percent={'auto'} fullscreen />
+      <Navbar
+        onUploadClick={() => setIsModalOpen(true)}
+        onAssistantClick={() => setAssistant(true)}
+      />
       <KnowledgeGraph data={graphData} />
       <div className='container'>
         <DocumentList
@@ -116,13 +117,20 @@ const KnowledgePage = () => {
         <FileUpload onUploadSuccess={handleUploadSuccess} />
       </Modal>
 
-      {/* 前端预览待开发 */}
-      {/* {
+      <Modal
+        open={assistant}
+        onCancel={() => setAssistant(false)}
+        footer={[]}
+        width={1000}
+      >
+        <AIAssistantChat />
+      </Modal>
+      {
         activeNode && <PDFPreview
           node={activeNode}
           onClose={() => setActiveNode(null)}
         />
-      } */}
+      }
     </div>
   );
 };
